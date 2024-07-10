@@ -15,7 +15,7 @@ async function fetchData(slug: string[]) {
   return new Promise<{ data: string }>((resolve) => {
     setTimeout(() => {
       resolve({ data: `Fetched data for /${slug.join('/')}` });
-    }, 200);
+    }, 2000);
   });
 }
 

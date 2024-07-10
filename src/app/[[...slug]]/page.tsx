@@ -32,6 +32,7 @@ export default async function CatchAllPage({ params, searchParams }: CatchAllPag
           You are on the page: <code className={styles.code}>{slug.length > 0 ? `/${slug.join('/')}` : '/'}</code>
         </p>
         <p>{data}</p>
+        <p>Search params: { searchParams?.bar}</p>
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

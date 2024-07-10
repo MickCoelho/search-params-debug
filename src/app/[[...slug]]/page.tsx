@@ -5,9 +5,12 @@ interface CatchAllPageProps {
   params: {
     slug?: string[];
   };
+  searchParams?: { [key: string]: string };
 }
 
-export default function CatchAllPage({ params }: CatchAllPageProps) {
+export default function CatchAllPage({ params, searchParams }: CatchAllPageProps) {
+  console.log('searchParams', searchParams);
+  
   const slug = params.slug || [];
 
   return (

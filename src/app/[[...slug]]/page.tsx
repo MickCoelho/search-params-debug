@@ -8,8 +8,6 @@ interface CatchAllPageProps {
   searchParams?: { [key: string]: string };
 }
 
-export const dynamicParams = false;
-
 // Simulate a fetch function with a 200ms delay
 async function fetchData(slug: string[]) {
   return new Promise<{ data: string }>((resolve) => {

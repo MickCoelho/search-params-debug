@@ -8,6 +8,8 @@ interface CatchAllPageProps {
   searchParams?: { [key: string]: string };
 }
 
+export const dynamicParams = false;
+
 export default function CatchAllPage({ params, searchParams }: CatchAllPageProps) {
   console.log('searchParams', searchParams?.bar);
   

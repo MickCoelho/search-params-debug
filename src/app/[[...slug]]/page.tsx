@@ -9,7 +9,7 @@ interface CatchAllPageProps {
 }
 
 export default function CatchAllPage({ params, searchParams }: CatchAllPageProps) {
-  console.log('searchParams', searchParams);
+  console.log('searchParams', searchParams?.bar);
   
   const slug = params.slug || [];
 

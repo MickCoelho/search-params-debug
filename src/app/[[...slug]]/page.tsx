@@ -10,10 +10,20 @@ interface CatchAllPageProps {
 
 export const dynamicParams = false;
 
-export default function CatchAllPage({ params, searchParams }: CatchAllPageProps) {
+// Simulate a fetch function with a 200ms delay
+async function fetchData(slug: string[]) {
+  return new Promise<{ data: string }>((resolve) => {
+    setTimeout(() => {
+      resolve({ data: `Fetched data for /${slug.join('/')}` });
+    }, 200);
+  });
+}
+
+export default async function CatchAllPage({ params, searchParams }: CatchAllPageProps) {
   console.log('searchParams', searchParams?.bar);
   
   const slug = params.slug || [];
+  const { data } = await fetchData(slug);
 
   return (
     <main className={styles.main}>
@@ -21,6 +31,7 @@ export default function CatchAllPage({ params, searchParams }: CatchAllPageProps
         <p>
           You are on the page: <code className={styles.code}>{slug.length > 0 ? `/${slug.join('/')}` : '/'}</code>
         </p>
+        <p>{data}</p>
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

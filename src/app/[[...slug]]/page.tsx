@@ -1,13 +1,20 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 
-export default function Home() {
+interface CatchAllPageProps {
+  params: {
+    slug?: string[];
+  };
+}
+
+export default function CatchAllPage({ params }: CatchAllPageProps) {
+  const slug = params.slug || [];
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+          You are on the page: <code className={styles.code}>{slug.length > 0 ? `/${slug.join('/')}` : '/'}</code>
         </p>
         <div>
           <a
@@ -92,4 +99,15 @@ export default function Home() {
       </div>
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  // Example static paths, you can customize this as needed
+  return [
+    { slug: [] },
+    { slug: ["about"] },
+    { slug: ["test"] },
+    { slug: ["pricing"] },
+    { slug: ["contact"] },
+  ];
 }
